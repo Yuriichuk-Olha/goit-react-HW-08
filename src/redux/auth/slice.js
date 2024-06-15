@@ -14,18 +14,19 @@ const authSlice = createSlice({
     extraReducers: (builder) => {
         builder
         .addCase(register.fulfilled, (state, action) => {
+            console.log('Register fulfilled payload:', action.payload);
             state.user = action.payload.user;
             state.token = action.payload.token;
             state.isLoggedIn = true;
         })
         .addCase(register.pending,(state, action)=>{
-            state.user = action.payload.user;
-            state.token = action.payload.token;
+            //state.user = action.payload.user;
+            //state.token = action.payload.token;
             state.isLoggedIn = true;
         })
         .addCase(register.rejected, (state) => {
             state.isLoggedIn = false;
-        })
+        }) 
         .addCase(logIn.fulfilled, (state, action) => {
             state.user = action.payload.user;
             state.token = action.payload.token;

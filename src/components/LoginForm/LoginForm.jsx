@@ -1,21 +1,34 @@
+import { Field, Form, Formik } from "formik"
+import { useDispatch } from "react-redux"
+import {logIn} from '../../redux/auth/authApi'
+
 export const LoginForm = () => {
-
-    const handelSubmit = (e) => {
-        e.preventDefault();
-
+    const dispatch = useDispatch()
+    const handleSubmit=(values,actions)=>{
+        console.log(values)
+        dispatch(logIn(values))
+        actions.resetForm()
     }
 
     return (
-        <form onSubmit={handelSubmit}>
+        <Formik 
+        initialValue={{
+            email:"",
+            password:"",
+        }}
+        onSubmit={handleSubmit}
+        >
+        <Form autoComplete="off">
             <label type='email' name='email'>
                 Email
-                <input type="email" name="email"/>
+                <Field type="email" name="email"/>
             </label>
             <label type='password' name='password'>
                 Password
-                <input type="password" name="password"/>
+                <Field type="password" name="password"/>
             </label>
             <button type="submit">Log In</button>
-        </form>
+        </Form>
+        </Formik>
     )
 }
