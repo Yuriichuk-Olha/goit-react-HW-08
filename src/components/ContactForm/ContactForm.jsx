@@ -1,12 +1,15 @@
-import { useId } from 'react';
-import { ErrorMessage, Field, Form, Formik } from 'formik';
+//import * as Yup from 'yup';
+
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
+import { useId } from 'react';
+import { ErrorMessage, Field, Formik } from 'formik';
+import { Form } from 'react-router-dom';
 import { nanoid } from '@reduxjs/toolkit';
 
-import { addContact } from '../../redux/contactsOps';
-
 import css from './ContactForm.module.css';
+import { addContact } from '../../redux/contacts/contactsApi';
+
 
 const validationSchema = Yup.object({
   name: Yup.string()

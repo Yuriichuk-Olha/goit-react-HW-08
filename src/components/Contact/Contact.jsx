@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { FaRegUser, FaPhone, FaRegTrashAlt } from 'react-icons/fa';
 
-import { deleteContact } from '../../redux/contactsOps';
+import { deleteContact } from '../../redux/contacts/contactsApi';
 
 import css from './Contact.module.css';
 
