@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { Formik, Field, Form } from "formik";
-import { register } from "../../redux/auth/authApi";
+import { register } from "../../redux/auth/operations";
 
 import css from './RegisterForm.module.css'
 
@@ -12,8 +12,8 @@ export const RegisterForm = () => {
         dispatch(register(values))
         .unwrap()
         .then(data=>console.log(data))
-        .catch(error=>console.log(error)) 
-        //.catch(()=>alert('Registration error!'))
+       // .catch(error=>console.log(error)) 
+        .catch(()=>alert('Registration error!'))
         actions.resetForm()
     }
     return (
@@ -27,9 +27,7 @@ export const RegisterForm = () => {
         onSubmit={handleSubmit}
         >
 
-    <Form autoComplete="off" 
-    //onSubmit={handleSubmit}
-    >
+    <Form autoComplete="off" >
         <label htmlFor='name' className={css.label}>
             Username
             <Field type="text" name="name" className={css.inputField}/>
@@ -42,11 +40,6 @@ export const RegisterForm = () => {
             Password
             <Field type="password" name="password" className={css.inputField}/>
         </label>
-       {/*  <ErrorMessage
-            name="password"
-            component="div"
-            className={css.errorMessage}
-          /> */}
         <button type="submit" className={css.submitButton}>Register</button>
     </Form>
         </Formik>

@@ -6,7 +6,7 @@ import PrivateRoute from '../src/components/PrivateRoute'
 import RestrictedRoute from '../src/components/RestrictedRoute'
 
 import {Layout} from '../src/components/Layout'
-import {refreshUser} from '../src/redux/auth/authApi'
+import {refreshUser} from './redux/auth/operations'
 import { selectIsRefreshing } from './redux/auth/selector';
 
 const Home = lazy(() => import('./pages/Home'))

@@ -1,0 +1,23 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.name {
+    font-weight: bold;
+    font-size: 20px;
+
+}
+.logoutButton {
+    background-color: #2b6854cd;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 4px;
+}
+
+.logoutButton:hover {
+    background-color: #d32f2f;
+}

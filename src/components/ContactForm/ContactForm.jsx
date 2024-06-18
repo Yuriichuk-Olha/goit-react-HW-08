@@ -5,7 +5,7 @@ import { Form, ErrorMessage, Field, Formik } from 'formik';
 import { nanoid } from '@reduxjs/toolkit';
 
 import css from './ContactForm.module.css';
-import { addContact } from '../../redux/contacts/contactsApi';
+import { addContact } from '../../redux/contacts/operations';
 
 
 const validationSchema = Yup.object({
