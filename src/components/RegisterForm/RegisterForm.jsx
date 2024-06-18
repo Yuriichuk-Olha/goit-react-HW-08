@@ -1,7 +1,8 @@
 import { useDispatch } from "react-redux";
-import { register } from "../../redux/auth/authApi";
 import { Formik, Field, Form } from "formik";
+import { register } from "../../redux/auth/authApi";
 
+import css from './RegisterForm.module.css'
 
 export const RegisterForm = () => {
     const dispatch = useDispatch();
@@ -11,11 +12,12 @@ export const RegisterForm = () => {
         dispatch(register(values))
         .unwrap()
         .then(data=>console.log(data))
-        .catch(error=>console.log(error)) 
-        //.catch(()=>alert('Registration error!'))
+        //.catch(error=>console.log(error)) 
+        .catch(()=>alert('Registration error!'))
         actions.resetForm()
     }
     return (
+        <div className={css.formContainer}>        
         <Formik 
         initialValues={{
             name:"",
@@ -28,20 +30,26 @@ export const RegisterForm = () => {
     <Form autoComplete="off" 
     //onSubmit={handleSubmit}
     >
-        <label htmlFor='name'>
+        <label htmlFor='name' className={css.label}>
             Username
-            <Field type="text" name="name"/>
+            <Field type="text" name="name" className={css.inputField}/>
         </label>
         <label htmlFor='email'>
             Email
-            <Field type="email" name="email"/>
+            <Field type="email" name="email" className={css.inputField}/>
         </label>
-        <label >
+        <label className={css.label}>
             Password
-            <Field type="password" name="password" />
+            <Field type="password" name="password" className={css.inputField}/>
         </label>
-        <button type="submit">Register</button>
+       {/*  <ErrorMessage
+            name="password"
+            component="div"
+            className={css.errorMessage}
+          /> */}
+        <button type="submit" className={css.submitButton}>Register</button>
     </Form>
         </Formik>
+        </div>
     );
 }

@@ -11,7 +11,7 @@ const handleRejected = (state, action) => {
   state.error = action.payload;
 };
 
-export const contactsSlice = createSlice({
+const contactsSlice = createSlice({
   name: 'contacts',
   initialState: {
     items: [],
@@ -20,28 +20,30 @@ export const contactsSlice = createSlice({
   },
   extraReducers: builder => {
     builder
-      .addCase(fetchAll.pending, handlePending)
       .addCase(addContact.pending, handlePending)
-      .addCase(deleteContact.pending, handlePending)
-      .addCase(fetchAll.rejected, handleRejected)
-      .addCase(addContact.rejected, handleRejected)
-      .addCase(deleteContact.rejected, handleRejected)
-      .addCase(fetchAll.fulfilled, (state, action) => {
-        state.items = action.payload;
-        state.isLoading = false;
-        state.error = null;
-      })
       .addCase(addContact.fulfilled, (state, action) => {
         state.items.push(action.payload);
         state.isLoading = false;
         state.error = null;
       })
+      .addCase(addContact.rejected, handleRejected)
+
+      .addCase(fetchAll.pending, handlePending)
+      .addCase(fetchAll.fulfilled, (state, action) => {
+        state.items = action.payload;
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(fetchAll.rejected, handleRejected)
+    
+      .addCase(deleteContact.pending, handlePending)
       .addCase(deleteContact.fulfilled, (state, action) => {
         const index = state.items.findIndex(item => item.id === action.payload);
         state.items.splice(index, 1);
         state.isLoading = false;
-        state.error = null;
-      });
+        state.error = null;       
+      })
+      .addCase(deleteContact.rejected, handleRejected)
   },
 });
 

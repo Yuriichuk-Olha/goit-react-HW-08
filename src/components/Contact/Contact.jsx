@@ -1,17 +1,19 @@
 import { useDispatch } from 'react-redux';
 import { FaRegUser, FaPhone, FaRegTrashAlt } from 'react-icons/fa';
-
+//import PropTypes from 'prop-types'
 import { deleteContact } from '../../redux/contacts/contactsApi';
 
 import css from './Contact.module.css';
 
-const Contact = ({ contact: { name, number, id } }) => {
+const Contact = ( {id, name, number}) => {
   const dispatch = useDispatch();
-
-  const handleClick = () => {
+  //console.log('Contact props:', { id, name, number });
+  const handleDelete = () => {
     dispatch(deleteContact(id));
   };
-
+ if(!name || !number){
+  return null
+ }
   return (
     <div className={css.box}>
       <div className={css.info}>
@@ -22,11 +24,16 @@ const Contact = ({ contact: { name, number, id } }) => {
           <FaPhone size={20} />: {number}
         </span>
       </div>
-      <button type="button" onClick={handleClick} className={css.button}>
-        <FaRegTrashAlt size={20} />
+      <button type="button" onClick={handleDelete} className={css.button}>
+         <FaRegTrashAlt size={20} /> Delete
       </button>
     </div>
   );
 };
 
+/* Contact.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
+}; */
 export default Contact;
