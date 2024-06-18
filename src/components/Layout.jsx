@@ -1,7 +1,4 @@
-import { Suspense } from "react"
-import { Outlet } from "react-router-dom"
 import {AppBar} from '../components/AppBar/AppBar'
-
 
 const style = {
     main:{
@@ -13,16 +10,15 @@ const style = {
     }
 }
 
-export const Layout = () => {
+
+export const Layout = ({ children }) => {
+    //console.log(children)
     return (
         <div>
-            <AppBar/>
+            <AppBar />
             <main style={style.main}>
-                <Suspense fallback={<div>Loading...</div>}>
-                    <Outlet />
-            </Suspense>
+                {children}
             </main>
-            
         </div>
     )
-}
+} 

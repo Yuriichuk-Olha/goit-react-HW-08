@@ -36,10 +36,6 @@ export const LoginForm = () => {
                 Password
                 <Field className={css.inputField} type="password" name="password"/>
             </label>
-           {/*  <ErrorMessage name="password"
-            component='div'
-            lassName={css.errorMessage}
-          /> */}
             <button className={css.submitButton} type="submit">Log In</button>
         </Form>
         </Formik>

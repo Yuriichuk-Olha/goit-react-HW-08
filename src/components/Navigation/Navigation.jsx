@@ -4,6 +4,7 @@ import { useSelector } from "react-redux"
 
 export const Navigation = () => {
     const isLoggedIn = useSelector(selectIsLoggedIn)
+    //console.log(isLoggedIn)
     return (
         <nav>
             <NavLink to="/">

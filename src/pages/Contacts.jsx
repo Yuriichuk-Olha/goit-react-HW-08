@@ -5,16 +5,16 @@ import ContactForm from "../components/ContactForm/ContactForm";
 import SearchBox from "../components/SearchBox/SearchBox";
 import ContactList from "../components/ContactList/ContactList";
 import { fetchAll } from "../redux/contacts/contactsApi";
-import { selectError, selectIsLoading } from "../redux/contacts/selectors";
+import {  selectIsLoading } from "../redux/contacts/selectors";
 import Contact from "../components/Contact/Contact";
-
+//selectError,
 
 export default function Contacts () {
 
 const dispatch = useDispatch();
   //const contacts=useSelector(selectContacts)
     const isLoading = useSelector(selectIsLoading);
-    const error = useSelector(selectError);
+    //const error = useSelector(selectError);
   
     useEffect(() => {
       dispatch(fetchAll());
@@ -27,12 +27,11 @@ const dispatch = useDispatch();
         </h1>
         <ContactForm />
         <SearchBox />
-        <h2>Contacts</h2>
         <Contact/>
         
         <ContactList />
-        {isLoading && <div>...loading</div>}
-        {error && <div>{error}</div>}
+         {isLoading && <div>...loading</div>} 
+        {/* {error && <div>{error}</div>} */}
 
       </div>
     );

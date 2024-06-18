@@ -8,12 +8,12 @@ export const RegisterForm = () => {
     const dispatch = useDispatch();
 
     const handleSubmit=(values, actions)=>{
-        //console.log(values)
+        console.log(values)
         dispatch(register(values))
         .unwrap()
         .then(data=>console.log(data))
-        //.catch(error=>console.log(error)) 
-        .catch(()=>alert('Registration error!'))
+        .catch(error=>console.log(error)) 
+        //.catch(()=>alert('Registration error!'))
         actions.resetForm()
     }
     return (

@@ -11,8 +11,9 @@ const ContactList = () => {
   const error = useSelector(selectError)
   const isLoading = useSelector(selectIsLoading)
   
-  return (
-    <ul className={css.list}>
+  return (<>
+      {contacts.length > 0 && <h2>Contacts</h2>}
+       <ul className={css.list}>
        {isLoading &&  <p>loading...</p>}
        {error && <p>Error: {error}</p>} 
       {contacts.map(({id,name,number}) => (
@@ -20,7 +21,11 @@ const ContactList = () => {
           <Contact id={id} name={name} number={number} />
         </li>
       ))}
-    </ul>
+      </ul>
+  </>
+    
+   
+    
   );
 };
 

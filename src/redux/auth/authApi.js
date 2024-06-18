@@ -7,9 +7,7 @@ const setAuthHeader = (token) => {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`
 };
 
-//const clearAuthHeader = () = {
-//    axios.defaults.headers.common.Authorization = ''
-//};
+
 
 export const register = createAsyncThunk(
     'auth/register',
@@ -74,7 +72,6 @@ export const register = createAsyncThunk(
       try {
         setAuthHeader(persistedToken);
         const res = await axios.get('/users/current');
-        //console.log(res.data.name)
         return res.data;
       } catch (error) {
         return thunkAPI.rejectWithValue(error.message);
